@@ -1,0 +1,31 @@
+
+
+ <button type="button" class="btn btn-primary" routerLink="/create">Agregar</button>
+ <ng-template #name>
+  <div  class="alert alert-primary" role="alert">
+  No existen registros
+  </div>
+ </ng-template>
+
+<table class="table"  *ngIf="empleados.length>0; else name" >
+  <thead>
+    <tr>
+      <th scope="col">NOMBRE</th>
+      <th scope="col">APELLIDO</th>
+      <th scope="col">DOCUMENTO</th>
+      <th scope="col">SALALRIO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let empleado of empleados ">
+      <td >{{empleado.nombre}}</td>
+      <td>{{empleado.apellido}}</td>
+      <td>{{empleado.documento}}</td>
+      <td>{{empleado.salario}}</td>
+      <td><i class="fas fa-edit text-info" [routerLink]="['/editar',empleado.id]"></i></td>
+      <td><i (click)="eliminar(empleado.id)" class="fas fa-trash-alt text-danger"></i></td>
+    </tr>
+   </tbody>
+</table>
+
+
